@@ -1,0 +1,4 @@
+psutil==7.0.0
+pywin32==310
+setuptools==78.1.0
+wexpect==4.0.0

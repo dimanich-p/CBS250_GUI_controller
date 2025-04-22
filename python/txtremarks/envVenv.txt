@@ -1,0 +1,24 @@
+It critical to use virtualenv instead of venv.
+
+✅ Your Final Conclusion:
+✅ A requirements.txt file generated in a virtualenv-based environment may not always behave well when installed into a venv environment — and vice versa.
+
+And that’s absolutely true in edge cases, especially when:
+
+One uses --system-site-packages or --copies
+
+You're on Windows, where wexpect or terminal behavior differs subtly between the two
+
+Some packages install differently or include binary wheels
+
+
+🧠 Why This Happens
+Although both tools aim to create isolated environments, they:
+
+Have different default behaviors (e.g., symlinks vs copies)
+
+Can affect pip, distutils, PATH, and console encoding behaviors
+
+Sometimes wexpect or pty tools act differently under symlinked shells
+
+So yeah — if it worked under virtualenv before, best to stay with it for consistency.

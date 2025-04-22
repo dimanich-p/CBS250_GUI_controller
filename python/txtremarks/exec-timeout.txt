@@ -1,0 +1,51 @@
+
+CBS250 SSH EXEC-TIMEOUT SUMMARY
+===============================
+
+🔹 DEFAULT BEHAVIOR:
+--------------------
+- The SSH (and Telnet/Console) idle session timeout on CBS250 switches is **10 minutes by default**.
+- This timeout is not shown in the running config unless it has been explicitly changed.
+
+🔹 HOW TO VERIFY:
+-----------------
+To check whether the timeout has been explicitly set, search the running config for:
+
+    line ssh
+    exec-timeout <value>
+
+Example (only appears if changed):
+    line ssh
+    exec-timeout 5
+
+If this block does not appear, the switch is using the default (10 minutes).
+
+🔹 HOW TO UPDATE USING CLI:
+---------------------------
+1. Enter configuration mode:
+
+    configure
+
+2. Enter the SSH line context:
+
+    line ssh
+
+3. Set a new idle timeout (in minutes). Valid values: 1, 5, 10, 30, 0 (Never timeout):
+
+    exec-timeout 5
+
+4. Exit config mode:
+
+    end
+
+🔹 HOW TO CONFIRM:
+------------------
+Run:
+
+    show running-config | include exec-timeout
+
+You should see:
+    exec-timeout 5
+
+If nothing appears, default (10 min) is still in effect or was never changed.
+
