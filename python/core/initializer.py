@@ -107,8 +107,6 @@ class Initializer:
                                     settings_obj.physical_interface_ips[ip] = mask
                         elif line == "no switchport":
                             settings_obj.active_mode = "no switchport"
-                        elif "switchport mode access" in line:
-                            settings_obj.active_mode = "access"
                         elif "switchport mode trunk" in line:
                             settings_obj.active_mode = "trunk"
                         elif "switchport mode general" in line:
